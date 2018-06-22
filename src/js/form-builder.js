@@ -944,6 +944,12 @@ const FormBuilder = function(opts, element) {
         title: i18n.hide,
       }),
       m('a', null, {
+        type: 'settings',
+        id: data.lastID + '-setting',
+        className: 'btn glyphicon glyphicon-cog',
+        title: 'Settings'
+      }),
+      m('a', null, {
         type: 'copy',
         id: data.lastID + '-copy',
         className: 'copy-button btn icon-copy',
