@@ -620,7 +620,7 @@ const FormBuilder = function(opts, element) {
   //  console.log('Label',values);
     let cusFields = ['<div class="form-group label-wrap" style="display: block">',
     '<label>Url</label>','<div class="input-wrap">',
-    '<input class="form-control" placeholder="Enter Data URL" />','</div>',
+    '<input class="form-control" name="url" placeholder="Enter Data URL" />','</div>',
     '</div>',
     '</div>'];
  

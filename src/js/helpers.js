@@ -190,9 +190,7 @@ export default class Helpers {
           let fieldData = _this.getTypes($field)
           let $roleInputs = $('.roles-field:checked', field)
           let roleVals = $roleInputs.map(index => $roleInputs[index].value).get()
-
           _this.setAttrVals(field, fieldData)
-
           if (fieldData.subtype) {
             if (fieldData.subtype === 'quill') {
               let id = `${fieldData.name}-preview`
@@ -230,8 +228,16 @@ export default class Helpers {
           if (multipleField) {
             fieldData.values = _this.fieldOptionData($field)
           }
-
-          formData.push(fieldData)
+          // Custom Fields Saving
+          fieldData.custom={};
+          let customFields = $($field).find('.customform-elements').find('input');
+          console.log(customFields);
+          $(customFields).each(function(index,obj){
+            let key=$(obj).attr('name');
+            let val=$(obj).val();
+            fieldData.custom[key]=val;    
+          })
+          formData.push(fieldData);
         }
       })
     }
