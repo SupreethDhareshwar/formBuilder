@@ -231,8 +231,7 @@ export default class Helpers {
           // Custom Fields Saving
           fieldData.custom={};
           let customFields = $($field).find('.customform-elements').find('input');
-          console.log(customFields);
-          $(customFields).each(function(index,obj){
+          $(customFields).each(function(ind,obj){
             let key=$(obj).attr('name');
             let val=$(obj).val();
             fieldData.custom[key]=val;    
