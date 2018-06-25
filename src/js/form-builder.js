@@ -963,7 +963,7 @@ const FormBuilder = function(opts, element) {
       m('a', null, {
         type: 'settings',
         id: data.lastID + '-setting',
-        className: 'btn glyphicon glyphicon-cog',
+        className: 'toggle-customForm btn glyphicon glyphicon-cog',
         title: 'Settings'
       }),
       m('a', null, {
@@ -1168,6 +1168,20 @@ const FormBuilder = function(opts, element) {
         .parents('.form-field:eq(0)')
         .attr('id')
       h.toggleEdit(targetID)
+      e.handled = true
+    } else {
+      return false
+    }
+  })
+// Toggling custom settings template
+  $stage.on('click touchstart', '.toggle-customForm, .closeCustom-field', function(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    if (e.handled !== true) {
+      let targetID = $(e.target)
+        .parents('.form-field:eq(0)')
+        .attr('id')
+      h.toggleSettings(targetID)
       e.handled = true
     } else {
       return false

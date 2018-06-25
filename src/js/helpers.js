@@ -795,6 +795,28 @@ export default class Helpers {
   }
 
   /**
+   * Toggles the settings mode for the given field
+   * @param  {String} fieldId
+   * @param  {Boolean} animate
+   */
+  toggleSettings(fieldId, animate = true) {
+    const field = document.getElementById(fieldId)
+    const toggleBtn = $('.toggle-customForm', field)
+    if (!toggleBtn.length) return
+    const editPanel = $('.custfrm-holder', field)
+    field.classList.toggle('editing')
+    toggleBtn.toggleClass('open')
+    if (animate) {
+      $('.prev-holder', field).slideToggle(250)
+      editPanel.slideToggle(250)
+    } else {
+      $('.prev-holder', field).toggle()
+      editPanel.toggle()
+    }
+    this.updatePreview($(field))
+  }
+
+  /**
    * Controls follow scroll to the bottom of the editor
    */
   stickyControls() {
