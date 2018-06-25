@@ -611,6 +611,23 @@ const FormBuilder = function(opts, element) {
   }
 
   /**
+   * Build the editable properties for the field
+   * @param  {object} values configuration object for advanced fields
+   * @return {String}        markup for advanced fields
+   */
+  let cusFields = values => {
+    // let { type } = values
+  //  console.log('Label',values);
+    let cusFields = ['<div class="form-group label-wrap" style="display: block">',
+    '<label>Url</label>','<div class="input-wrap">',
+    '<input class="form-control" placeholder="Enter Data URL" />','</div>',
+    '</div>',
+    '</div>'];
+ 
+    return cusFields.join('');
+  }
+
+  /**
    * Processes typeUserAttrs
    * @param  {Object} typeUserAttr option
    * @param  {Object} values       field attributes
@@ -989,6 +1006,13 @@ const FormBuilder = function(opts, element) {
       className: 'form-elements',
     })
     liContents.push(m('div', formElements, { id: `${data.lastID}-holder`, className: 'frm-holder' }))
+    // Pushing our custom div to newly dropped element
+
+    const cutomFormElements=m('div', [cusFields(values), m('a', i18n.close, { className: 'closeCustom-field' })], {
+      className: 'customform-elements',
+    })
+    liContents.push(m('div', cutomFormElements, { id: `${data.lastID}-customHolder`, className: 'custfrm-holder' }))
+
 
     let field = m('li', liContents, {
       class: type + '-field form-field',
