@@ -445,7 +445,7 @@ const FormBuilder = function(opts, element) {
       hidden: ['name', 'value', 'access'],
       paragraph: ['label', 'subtype', 'className', 'access'],
       number: defaultAttrs.concat(['min', 'max', 'step']),
-      select: defaultAttrs.concat(['multiple', 'options']),
+      select: defaultAttrs.concat(['url','multiple', 'options']),
       textarea: defaultAttrs.concat(['subtype', 'maxlength', 'rows']),
     }
 
@@ -499,6 +499,7 @@ const FormBuilder = function(opts, element) {
       className: () => textAttribute('className', values),
       name: () => textAttribute('name', values),
       value: () => textAttribute('value', values),
+      url: () => textAttribute('url', values),
       maxlength: () => numberAttribute('maxlength', values),
       access: () => {
         let rolesDisplay = values.role ? 'style="display:block"' : ''
