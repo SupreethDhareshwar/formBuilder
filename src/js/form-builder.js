@@ -418,14 +418,14 @@ const FormBuilder = function(opts, element) {
   }
 
   const defaultFieldAttrs = type => {
-    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name', 'access', 'value']
+    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name', 'value']
     let noValFields = ['header', 'paragraph', 'file', 'autocomplete'].concat(d.optionFields)
 
     let valueField = !utils.inArray(type, noValFields)
 
     const typeAttrsMap = {
       autocomplete: defaultAttrs.concat(['options','requireValidOption']),
-      button: ['label', 'subtype', 'style', 'className', 'name', 'value', 'access'],
+      button: ['label', 'subtype', 'style', 'className', 'name', 'value','url'],
       checkbox: [
         'required',
         'label',
@@ -500,6 +500,7 @@ const FormBuilder = function(opts, element) {
       name: () => textAttribute('name', values),
       value: () => textAttribute('value', values),
       maxlength: () => numberAttribute('maxlength', values),
+      url:()=> textAttribute('url', values),
       access: () => {
         let rolesDisplay = values.role ? 'style="display:block"' : ''
         let availableRoles = [`<div class="available-roles" ${rolesDisplay}>`]
