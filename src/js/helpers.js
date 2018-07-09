@@ -190,7 +190,9 @@ export default class Helpers {
           let fieldData = _this.getTypes($field)
           let $roleInputs = $('.roles-field:checked', field)
           let roleVals = $roleInputs.map(index => $roleInputs[index].value).get()
+
           _this.setAttrVals(field, fieldData)
+
           if (fieldData.subtype) {
             if (fieldData.subtype === 'quill') {
               let id = `${fieldData.name}-preview`
@@ -228,15 +230,8 @@ export default class Helpers {
           if (multipleField) {
             fieldData.values = _this.fieldOptionData($field)
           }
-          // Custom Fields Saving
-          fieldData.custom={};
-          let customFields = $($field).find('.customform-elements').find('input');
-          $(customFields).each(function(ind,obj){
-            let key=$(obj).attr('name');
-            let val=$(obj).val();
-            fieldData.custom[key]=val;    
-          })
-          formData.push(fieldData);
+
+          formData.push(fieldData)
         }
       })
     }
@@ -787,28 +782,6 @@ export default class Helpers {
     const toggleBtn = $('.toggle-form', field)
     if (!toggleBtn.length) return
     const editPanel = $('.frm-holder', field)
-    field.classList.toggle('editing')
-    toggleBtn.toggleClass('open')
-    if (animate) {
-      $('.prev-holder', field).slideToggle(250)
-      editPanel.slideToggle(250)
-    } else {
-      $('.prev-holder', field).toggle()
-      editPanel.toggle()
-    }
-    this.updatePreview($(field))
-  }
-
-  /**
-   * Toggles the settings mode for the given field
-   * @param  {String} fieldId
-   * @param  {Boolean} animate
-   */
-  toggleSettings(fieldId, animate = true) {
-    const field = document.getElementById(fieldId)
-    const toggleBtn = $('.toggle-customForm', field)
-    if (!toggleBtn.length) return
-    const editPanel = $('.custfrm-holder', field)
     field.classList.toggle('editing')
     toggleBtn.toggleClass('open')
     if (animate) {

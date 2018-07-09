@@ -186,27 +186,6 @@
       }
     }
 
-    .closeCustom-field {
-      position: absolute;
-      color: $grey;
-      left: 50%;
-      bottom: 6px;
-      background: $white;
-      border-top: 1px solid $input-border-color;
-      border-left: 1px solid $input-border-color;
-      border-right: 1px solid $input-border-color;
-      transform: translateX(-50%);
-      padding: 0 5px;
-      border-top-right-radius: 3px;
-      border-top-left-radius: 3px;
-      cursor: pointer;
-      transition: background-color 250ms ease-in-out;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
     &.button-field,
     &.header-field,
     &.paragraph-field {
@@ -279,9 +258,6 @@
   }
 
   .frm-holder {
-    display: none;
-  }
-  .custfrm-holder {
     display: none;
   }
 
@@ -537,7 +513,7 @@
     }
   }
 
-  .form-elements, .customform-elements {
+  .form-elements {
     padding: 10px 5px;
     background: #f7f7f7;
     border-radius: 3px;

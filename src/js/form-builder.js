@@ -418,14 +418,14 @@ const FormBuilder = function(opts, element) {
   }
 
   const defaultFieldAttrs = type => {
-    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name', 'value']
+    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name', 'access', 'value']
     let noValFields = ['header', 'paragraph', 'file', 'autocomplete'].concat(d.optionFields)
 
     let valueField = !utils.inArray(type, noValFields)
 
     const typeAttrsMap = {
       autocomplete: defaultAttrs.concat(['options','requireValidOption']),
-      button: ['label', 'subtype', 'style', 'className', 'name', 'value','url'],
+      button: ['label', 'subtype', 'style', 'className', 'name', 'value', 'access'],
       checkbox: [
         'required',
         'label',
@@ -500,7 +500,6 @@ const FormBuilder = function(opts, element) {
       name: () => textAttribute('name', values),
       value: () => textAttribute('value', values),
       maxlength: () => numberAttribute('maxlength', values),
-      url:()=> textAttribute('url', values),
       access: () => {
         let rolesDisplay = values.role ? 'style="display:block"' : ''
         let availableRoles = [`<div class="available-roles" ${rolesDisplay}>`]
@@ -609,23 +608,6 @@ const FormBuilder = function(opts, element) {
     }
 
     return advFields.join('')
-  }
-
-  /**
-   * Build the editable properties for the field
-   * @param  {object} values configuration object for advanced fields
-   * @return {String}        markup for advanced fields
-   */
-  let cusFields = values => {
-    // let { type } = values
-  //  console.log('Label',values);
-    let cusFields = ['<div class="form-group label-wrap" style="display: block">',
-    '<label>Url</label>','<div class="input-wrap">',
-    '<input class="form-control" name="url" placeholder="Enter Data URL" />','</div>',
-    '</div>',
-    '</div>'];
- 
-    return cusFields.join('');
   }
 
   /**
@@ -962,12 +944,6 @@ const FormBuilder = function(opts, element) {
         title: i18n.hide,
       }),
       m('a', null, {
-        type: 'settings',
-        id: data.lastID + '-setting',
-        className: 'toggle-customForm btn glyphicon glyphicon-cog',
-        title: 'Settings'
-      }),
-      m('a', null, {
         type: 'copy',
         id: data.lastID + '-copy',
         className: 'copy-button btn icon-copy',
@@ -1007,13 +983,6 @@ const FormBuilder = function(opts, element) {
       className: 'form-elements',
     })
     liContents.push(m('div', formElements, { id: `${data.lastID}-holder`, className: 'frm-holder' }))
-    // Pushing our custom div to newly dropped element
-
-    const cutomFormElements=m('div', [cusFields(values), m('a', i18n.close, { className: 'closeCustom-field' })], {
-      className: 'customform-elements',
-    })
-    liContents.push(m('div', cutomFormElements, { id: `${data.lastID}-customHolder`, className: 'custfrm-holder' }))
-
 
     let field = m('li', liContents, {
       class: type + '-field form-field',
@@ -1169,20 +1138,6 @@ const FormBuilder = function(opts, element) {
         .parents('.form-field:eq(0)')
         .attr('id')
       h.toggleEdit(targetID)
-      e.handled = true
-    } else {
-      return false
-    }
-  })
-// Toggling custom settings template
-  $stage.on('click touchstart', '.toggle-customForm, .closeCustom-field', function(e) {
-    e.stopPropagation()
-    e.preventDefault()
-    if (e.handled !== true) {
-      let targetID = $(e.target)
-        .parents('.form-field:eq(0)')
-        .attr('id')
-      h.toggleSettings(targetID)
       e.handled = true
     } else {
       return false
