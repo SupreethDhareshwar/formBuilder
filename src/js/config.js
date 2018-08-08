@@ -47,7 +47,8 @@ export const defaultOptions = {
   inputSets: [],
   replaceFields: [],
   roles: {
-    1: 'Administrator'
+    'poweruser': 'Power User',
+    'enduser': 'Standard User'
   },
   notify: {
     error: message => console.error(message),
