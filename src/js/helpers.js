@@ -230,7 +230,9 @@ export default class Helpers {
           if (multipleField) {
             fieldData.values = _this.fieldOptionData($field)
           }
-
+          if(fieldData.label){
+            fieldData.label=fieldData.label.replace(/(<([^>]+)>)/ig,'').trim();
+          }
           formData.push(fieldData)
         }
       })
