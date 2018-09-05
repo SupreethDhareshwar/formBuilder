@@ -29,4 +29,4 @@ export default class controlHidden extends control {
 }
 
 // register the following controls
-control.register('hidden', controlHidden);
+// control.register('hidden', controlHidden);

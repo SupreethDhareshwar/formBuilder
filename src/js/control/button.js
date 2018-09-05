@@ -19,5 +19,5 @@ export default class controlButton extends control {
 }
 
 // register the following controls
-control.register('button', controlButton);
-control.register(['button', 'submit', 'reset'], controlButton, 'button');
+// control.register('button', controlButton);
+// control.register(['button', 'submit', 'reset'], controlButton, 'button');
