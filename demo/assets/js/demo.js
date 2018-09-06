@@ -1,22 +1,6 @@
 jQuery(function($) {
   var fields = [
     {
-      type: 'autocomplete',
-      label: 'Custom Autocomplete',
-      required: true,
-      values: [
-        {label: 'SQL'},
-        {label: 'C#'},
-        {label: 'JavaScript'},
-        {label: 'Java'},
-        {label: 'Python'},
-        {label: 'C++'},
-        {label: 'PHP'},
-        {label: 'Swift'},
-        {label: 'Ruby'}
-      ]
-    },
-    {
       label: 'Star Rating',
       attrs: {
         type: 'starRating'
@@ -104,7 +88,6 @@ jQuery(function($) {
       }];
 
   var typeUserDisabledAttrs = {
-    autocomplete: ['access']
   };
 
   var typeUserAttrs = {
@@ -147,7 +130,7 @@ jQuery(function($) {
     typeUserAttrs: typeUserAttrs,
     disableInjectedStyle: false,
     actionButtons: actionButtons,
-    disableFields: ['autocomplete'],
+    disableFields: [],
     replaceFields: replaceFields,
     disabledFieldButtons: {
       text: ['copy']
