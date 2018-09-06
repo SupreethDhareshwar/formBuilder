@@ -3,7 +3,6 @@ export const defaultOptions = {
   append: false,
   actionButtons: [],
   controlOrder: [
-    'autocomplete',
     'checkbox',
     'checkbox-group',
     'date',
@@ -66,7 +65,7 @@ export const defaultOptions = {
     },
   },
   templates: {},
-  showActionButtons: false,
+  showActionButtons: true,
   typeUserDisabledAttrs: {},
   typeUserAttrs: {},
   typeUserEvents: {},
@@ -82,6 +81,7 @@ export const defaultI18n = {
   langs: ['en-US'],
   preloaded: {
     'en-US': {
+      actionFormInherit:'Display in Action Form',
       addOption: 'Add Option +',
       allFieldsRemoved: 'All fields were removed.',
       allowMultipleFiles: 'Allow users to upload multiple files',
@@ -183,7 +183,7 @@ export const defaultI18n = {
       toggle: 'Toggle',
       warning: 'Warning!',
       url:'Url',
-      value: 'Value',
+      value: 'Default Value',
       viewJSON: '{  }',
       viewXML: '&lt;/&gt;',
       yes: 'Yes',

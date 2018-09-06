@@ -418,7 +418,7 @@ const FormBuilder = function(opts, element) {
   }
 
   const defaultFieldAttrs = type => {
-    const defaultAttrs = ['required', 'label', 'description', 'placeholder', 'className', 'name', 'access', 'value']
+    const defaultAttrs = ['required', 'label', 'placeholder', 'name', 'actionFormInherit','value']
     let noValFields = ['header', 'paragraph', 'file', 'autocomplete'].concat(d.optionFields)
 
     let valueField = !utils.inArray(type, noValFields)
@@ -429,13 +429,9 @@ const FormBuilder = function(opts, element) {
       checkbox: [
         'required',
         'label',
-        'description',
-        'toggle',
-        'inline',
-        'className',
         'name',
-        'access',
-        'other',
+        'actionFormInherit',
+        'url',
         'options',
       ],
       text: defaultAttrs.concat(['subtype', 'maxlength']),
@@ -480,6 +476,7 @@ const FormBuilder = function(opts, element) {
     let advFields = []
     let fieldAttrs = defaultFieldAttrs(type)
     const advFieldMap = {
+      actionFormInherit: ()=> boolAttribute('actionFormInherit',values,{ first:i18n.actionFormInherit  }),
       required: () => requiredField(values),
       toggle: () => boolAttribute('toggle', values, { first: i18n.toggle }),
       inline: () => {
