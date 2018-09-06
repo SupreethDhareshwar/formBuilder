@@ -436,10 +436,10 @@ const FormBuilder = function(opts, element) {
       ],
       text: defaultAttrs.concat(['subtype', 'maxlength']),
       date: defaultAttrs,
-      file: defaultAttrs.concat(['subtype', 'multiple']),
-      header: ['label', 'subtype', 'className', 'access'],
+      file: defaultAttrs.concat(['multiple']),
+      header: ['label', 'subtype', 'actionFormInherit'],
       hidden: ['name', 'value', 'access'],
-      paragraph: ['label', 'subtype', 'className', 'access'],
+      paragraph: ['label', 'actionFormInherit'],
       number: defaultAttrs.concat(['min', 'max', 'step']),
       select: defaultAttrs.concat(['url','multiple', 'options']),
       textarea: defaultAttrs.concat(['subtype', 'maxlength', 'rows']),
@@ -462,7 +462,6 @@ const FormBuilder = function(opts, element) {
     if (!valueField) {
       utils.remove('value', typeAttrs)
     }
-
     return typeAttrs || defaultAttrs
   }
 
