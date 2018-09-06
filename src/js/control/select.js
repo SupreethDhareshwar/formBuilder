@@ -25,6 +25,9 @@ export default class controlSelect extends control {
    */
   build() {
     let options = [];
+    if(this.config.type === 'select'){
+      this.config.className='form-control';
+    }
     let {values, value, placeholder, type, inline, other, toggle, ...data} = this.config;
     let optionType = type.replace('-group', '');
     let isSelect = type === 'select';

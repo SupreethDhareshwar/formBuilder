@@ -24,6 +24,7 @@ export default class controlTextarea extends control {
    * @return {Object} DOM Element to be injected into the form.
    */
   build() {
+    this.config.className='form-control';
     let {value = '', ...attrs} = this.config;
     this.field = this.markup('textarea', this.parsedHtml(value), attrs);
     return this.field;

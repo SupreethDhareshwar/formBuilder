@@ -25,6 +25,7 @@ export default class controlText extends control {
    * @return {Object} DOM Element to be injected into the form.
    */
   build() {
+    this.config.className='form-control';
     return this.markup('input', null, this.config);
   }
 
