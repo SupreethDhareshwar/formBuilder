@@ -289,4 +289,4 @@ export default class controlAutocomplete extends control {
   }
 }
 
-control.register('autocomplete', controlAutocomplete);
+// control.register('autocomplete', controlAutocomplete);

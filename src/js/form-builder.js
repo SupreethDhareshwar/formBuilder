@@ -442,7 +442,7 @@ const FormBuilder = function(opts, element) {
       paragraph: ['label', 'actionFormInherit'],
       number: defaultAttrs.concat(['min', 'max', 'step']),
       select: defaultAttrs.concat(['url','multiple', 'options']),
-      textarea: defaultAttrs.concat(['subtype', 'maxlength', 'rows']),
+      textarea: defaultAttrs.concat(['maxlength', 'rows']),
     }
 
     typeAttrsMap['checkbox-group'] = typeAttrsMap.checkbox
