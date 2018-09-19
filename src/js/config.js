@@ -182,7 +182,7 @@ export const defaultI18n = {
       textArea: 'Text Area',
       toggle: 'Toggle',
       warning: 'Warning!',
-      url:'Url',
+      url:'Data Source',
       value: 'Default Value',
       viewJSON: '{  }',
       viewXML: '&lt;/&gt;',

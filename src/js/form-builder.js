@@ -15,6 +15,22 @@ import controlCustom from './control/custom'
 
 let instanceTime = new Date().getTime()
 
+let dropdownOptions=[
+  {
+    'value':' ',
+    'label':'None'
+  }];
+  fetch('/formDesign/ListCollections')
+  .then((response)=>
+    response.json()
+  )
+  .then((data)=>{
+    dropdownOptions=data;
+  })
+  .catch((res)=>{
+    console.log(res);
+  });
+
 const FormBuilder = function(opts, element) {
   const formBuilder = this
   const i18n = mi18n.current
@@ -495,7 +511,7 @@ const FormBuilder = function(opts, element) {
       className: () => textAttribute('className', values),
       name: () => textAttribute('name', values),
       value: () => textAttribute('value', values),
-      url: () => textAttribute('url', values),
+      url: () => selectAttribute('url', values, dropdownOptions),
       maxlength: () => numberAttribute('maxlength', values),
       access: () => {
         let rolesDisplay = values.role ? 'style="display:block"' : ''
