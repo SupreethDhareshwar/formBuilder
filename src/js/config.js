@@ -19,6 +19,18 @@ export const defaultOptions = {
     {
       'value':'DD-MMMM-YYYY',
       'label':'26-January-1993'
+    },
+    {
+      'value':'MMMM DD,YYYY',
+      'label':'January 26,1993'
+    },
+    {
+      'value':'DD-MM-YYYY',
+      'label':'26-01-1993'
+    },
+    {
+      'value':'MMMM YYYY',
+      'label':'January 1993'
     }
   ],
   dataType: 'json',
