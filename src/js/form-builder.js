@@ -13,25 +13,22 @@ import control from './control'
 import './control/index'
 import controlCustom from './control/custom'
 
-let instanceTime = new Date().getTime()
-
 let dropdownOptions=[
   {
     'value':' ',
     'label':'None'
   }];
-  fetch('/formDesign/ListCollections')
-  .then((response)=>
-    response.json()
-  )
-  .then((data)=>{
-    dropdownOptions=data;
-  })
-  .catch((res)=>{
-    console.log(res);
-  });
+  try{
+     dropdownOptions = JSON.parse(sessionStorage.getItem('dropdownOptions'));
+  }
+  catch(ex){
+      console.log(ex);
+  }
 
-const FormBuilder = function(opts, element) {
+let instanceTime = new Date().getTime()
+
+  const FormBuilder = function(opts, element) {
+  
   const formBuilder = this
   const i18n = mi18n.current
   const formID = 'frmb-' + instanceTime++
@@ -451,7 +448,7 @@ const FormBuilder = function(opts, element) {
         'options',
       ],
       text: defaultAttrs.concat(['subtype', 'maxlength']),
-      date: defaultAttrs,
+      date: defaultAttrs.concat(['format']),
       file: defaultAttrs.concat(['multiple']),
       header: ['label', 'subtype', 'actionFormInherit'],
       hidden: ['name', 'value', 'access'],
@@ -511,6 +508,7 @@ const FormBuilder = function(opts, element) {
       className: () => textAttribute('className', values),
       name: () => textAttribute('name', values),
       value: () => textAttribute('value', values),
+      format: () => selectAttribute('format', values, opts.dateFormats),
       url: () => selectAttribute('url', values, dropdownOptions),
       maxlength: () => numberAttribute('maxlength', values),
       access: () => {

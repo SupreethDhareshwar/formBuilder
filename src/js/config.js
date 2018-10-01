@@ -15,6 +15,12 @@ export const defaultOptions = {
     'text',
     'textarea',
   ],
+  dateFormats:[
+    {
+      'value':'DD-MMMM-YYYY',
+      'label':'26-January-1993'
+    }
+  ],
   dataType: 'json',
   // Array of fields to disable
   disableFields: [],
@@ -111,6 +117,7 @@ export const defaultI18n = {
       fieldNonEditable: 'This field cannot be edited.',
       fieldRemoveWarning: 'Are you sure you want to remove this field?',
       fileUpload: 'File Upload',
+      format: 'Date Format',
       formUpdated: 'Form Updated',
       getStarted: 'Drag or click a field from the right to this area',
       header: 'Header',
