@@ -18,13 +18,7 @@ let dropdownOptions=[
     'value':' ',
     'label':'None'
   }];
-  try{
-     dropdownOptions = JSON.parse(sessionStorage.getItem('dropdownOptions'));
-  }
-  catch(ex){
-      console.log(ex);
-  }
-
+ 
 let instanceTime = new Date().getTime()
 
   const FormBuilder = function(opts, element) {
@@ -938,6 +932,7 @@ let instanceTime = new Date().getTime()
 
   // Append the new field to the editor
   let appendNewField = function(values, isNew = true) {
+    dropdownOptions = JSON.parse(sessionStorage.getItem('dropdownOptions'));
     let type = values.type || 'text'
     let label = values.label || i18n[type] || i18n.label
     let disabledFieldButtons = opts.disabledFieldButtons[type] || values.disabledFieldButtons
