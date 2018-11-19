@@ -99,7 +99,6 @@ export const defaultI18n = {
   langs: ['en-US'],
   preloaded: {
     'en-US': {
-      actionFormInherit:'Display in Action Form',
       addOption: 'Add Option +',
       allFieldsRemoved: 'All fields were removed.',
       allowMultipleFiles: 'Allow users to upload multiple files',

@@ -425,7 +425,7 @@ let instanceTime = new Date().getTime()
   }
 
   const defaultFieldAttrs = type => {
-    const defaultAttrs = ['required', 'label', 'placeholder', 'name', 'actionFormInherit','value']
+    const defaultAttrs = ['required', 'label', 'placeholder', 'name','value']
     let noValFields = ['header', 'paragraph', 'file', 'autocomplete'].concat(d.optionFields)
 
     let valueField = !utils.inArray(type, noValFields)
@@ -437,16 +437,15 @@ let instanceTime = new Date().getTime()
         'required',
         'label',
         'name',
-        'actionFormInherit',
         'url',
         'options',
       ],
       text: defaultAttrs.concat(['subtype', 'maxlength']),
       date: defaultAttrs.concat(['format']),
       file: defaultAttrs.concat(['multiple']),
-      header: ['label', 'subtype', 'actionFormInherit'],
+      header: ['label', 'subtype'],
       hidden: ['name', 'value', 'access'],
-      paragraph: ['label', 'actionFormInherit'],
+      paragraph: ['label'],
       number: defaultAttrs.concat(['min', 'max', 'step']),
       select: defaultAttrs.concat(['url','multiple', 'options']),
       textarea: defaultAttrs.concat(['maxlength', 'rows']),
@@ -482,7 +481,6 @@ let instanceTime = new Date().getTime()
     let advFields = []
     let fieldAttrs = defaultFieldAttrs(type)
     const advFieldMap = {
-      actionFormInherit: ()=> boolAttribute('actionFormInherit',values,{ first:i18n.actionFormInherit  }),
       required: () => requiredField(values),
       toggle: () => boolAttribute('toggle', values, { first: i18n.toggle }),
       inline: () => {
